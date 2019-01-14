@@ -205,5 +205,18 @@ class Provider extends ServiceProvider
                     return $options = Country::all()->pluck('name', 'id');
                 }
             );
+
+        $paymentGroup = AdminConfigurationFacade::add('multi_stores')
+            ->label('Multi Stores');
+
+        $paymentGroup->addConfiguration('multi_stores_enabled')
+            ->label('Multi Store is Enabled')
+            ->type('select')
+            ->name('multi_stores_enabled')
+            ->options(
+                function () {
+                    return [0 => 'No', 1 => 'Yes'];
+                }
+            );
     }
 }
