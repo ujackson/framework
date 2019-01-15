@@ -244,6 +244,15 @@ class AdminMenuProvider extends ServiceProvider
         );
 
         $systemMenu->subMenu(
+            'multi_store',
+            function (AdminMenu $menu) {
+                $menu->key('multi_store')
+                    ->label('Multi Stores')
+                    ->route('admin.tax-rate.index'); //@todo change this route
+            }
+        );
+
+        $systemMenu->subMenu(
             'module',
             function (AdminMenu $menu) {
                 $menu->key('module')->label('Modules')->route('admin.module.index');
