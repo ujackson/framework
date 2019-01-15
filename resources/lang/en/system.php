@@ -38,4 +38,9 @@ return [
 
     'activate' => 'Activate',
     'deactivate' => 'Deactivate',
+
+    'configuration' => [
+        'multi_store_title' => 'Multi Store is Enabled'
+    ]
+
 ];

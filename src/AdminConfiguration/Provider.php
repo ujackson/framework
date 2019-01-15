@@ -210,7 +210,7 @@ class Provider extends ServiceProvider
             ->label('Multi Stores');
 
         $paymentGroup->addConfiguration('multi_stores_enabled')
-            ->label('Multi Store is Enabled')
+            ->label('avored-framework::system.configuration.multi_store_title')
             ->type('select')
             ->name('multi_stores_enabled')
             ->options(
