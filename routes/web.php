@@ -146,4 +146,28 @@ Route::middleware(['web', 'admin.auth', 'permission'])
         'user/{user}/change-password',
         'User\Controllers\UserController@changePasswordUpdate'
     )->name('user.change-password.update');
+
+    /**
+     * multi-store routes
+     */
+
+    Route::resource('store','System\Controllers\MultiStoreController');
+
+    Route::get(
+        'stores',
+        'System\Controllers\MultiStoreController@index'
+    )->name('multistore');
+    Route::get(
+        'stores/disabled',
+        'System\Controllers\MultiStoreController@disabledScreen'
+    )->name('multistore.disabled');
+    Route::get(
+        'stores/create',
+        'System\Controllers\MultiStoreController@create'
+    )->name('multistore.create');
+
+    Route::get('stores/dev-enable', 'System\Controllers\MultiStoreController@enableMultiStore'); // @todo remove it later
+    Route::get('stores/dev-disable', 'System\Controllers\MultiStoreController@disableMultiStore'); // @todo remove it later
+
+
 });
