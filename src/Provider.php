@@ -3,6 +3,7 @@
 namespace AvoRed\Framework;
 
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
 use AvoRed\Framework\Api\Middleware\AdminApiAuth;
 use AvoRed\Framework\User\Middleware\AdminAuth;
@@ -23,6 +24,8 @@ use Laravel\Passport\Console\ClientCommand;
 use Laravel\Passport\Console\KeysCommand;
 use AvoRed\Framework\System\ViewComposers\SiteCurrencyFieldsComposer;
 use AvoRed\Framework\Cms\ViewComposers\MenuComposer;
+use AvoRed\Framework\Events\System\ConfigurationAfterSave;
+use AvoRed\Framework\Listeners\System\ConfigurationSaveListener;
 
 class Provider extends ServiceProvider
 {
@@ -55,6 +58,7 @@ class Provider extends ServiceProvider
         $this->registerViewComposerData();
         $this->registerResources();
         $this->registerPassportResources();
+        $this->registerEventListeners();
     }
 
     /**
@@ -211,5 +215,17 @@ class Provider extends ServiceProvider
             $this->app->make('Illuminate\Database\Eloquent\Factory')
                 ->load(__DIR__ . '/../database/factories');
         }
+    }
+
+    /**
+     * Register Event Listener for the AvoRed Framework
+     * @return void
+     */
+    public function registerEventListeners()
+    {
+        Event::listen(
+            ConfigurationAfterSave::class,
+            ConfigurationSaveListener::class
+        );
     }
 }
