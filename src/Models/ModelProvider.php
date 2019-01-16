@@ -51,6 +51,8 @@ use AvoRed\Framework\Models\Contracts\TaxGroupInterface;
 use AvoRed\Framework\Models\Repository\TaxGroupRepository;
 use AvoRed\Framework\Models\Contracts\TaxRateInterface;
 use AvoRed\Framework\Models\Repository\TaxRateRepository;
+use AvoRed\Framework\Models\Contracts\MultiStoreInterface;
+use AvoRed\Framework\Models\Repository\MultiStoreRepository;
 
 class ModelProvider extends ServiceProvider
 {
@@ -90,6 +92,7 @@ class ModelProvider extends ServiceProvider
         UserGroupInterface::class => UserGroupRepository::class,
         TaxGroupInterface::class => TaxGroupRepository::class,
         TaxRateInterface::class => TaxRateRepository::class,
+        MultiStoreInterface::class => MultiStoreRepository::class
     ];
 
     /**
