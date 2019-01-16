@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use AvoRed\Framework\Models\Database\Page;
 use AvoRed\Framework\Models\Database\Configuration as Model;
 use AvoRed\Framework\Models\Contracts\ConfigurationInterface;
+use AvoRed\Framework\Models\Database\MultiStore;
 
 class ConfigurationController extends Controller
 {
@@ -55,6 +56,17 @@ class ConfigurationController extends Controller
                 $this->repository->create($data);
             } else {
                 $configModel->update(['configuration_value' => $value]);
+                /**
+                 * Enable/Disable Multi-store
+                 */
+                if($key == 'multi_stores_enabled') {
+                    if($value == 1) {
+                        MultiStore::enable();
+                    }
+                    else {
+                        MultiStore::disable();
+                    }
+                }
             }
         }
         return redirect()->route('admin.configuration')
