@@ -142,7 +142,8 @@ class AdminMenuProvider extends ServiceProvider
             function (AdminMenu $menu) {
                 $menu->key('user')->label('Overview')->route('admin.user.index');
             }
-        );
+        );    
+        
         $userMenu->subMenu(
             'user_group', 
             function (AdminMenu $menu) {
@@ -160,12 +161,14 @@ class AdminMenuProvider extends ServiceProvider
         );
 
         $orderMenu = AdminMenuFacade::get('orders');
+        
         $orderMenu->subMenu(
             'order',
             function (AdminMenu $menu) {
                 $menu->key('order')->label('Overview')->route('admin.order.index');
             }
         );
+
         $orderMenu->subMenu(
             'order_return_request',
             function (AdminMenu $menu) {
@@ -248,7 +251,7 @@ class AdminMenuProvider extends ServiceProvider
             function (AdminMenu $menu) {
                 $menu->key('multi_store')
                     ->label('Multi Stores')
-                    ->route('admin.tax-rate.index'); //@todo change this route
+                    ->route('admin.multistore');
             }
         );
 
