@@ -5,6 +5,7 @@ namespace AvoRed\Framework\Listeners\System;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use AvoRed\Framework\Models\Contracts\ConfigurationInterface;
+use AvoRed\Framework\Models\Database\MultiStore;
 
 class ConfigurationSaveListener
 {
@@ -39,7 +40,9 @@ class ConfigurationSaveListener
 
         if ($value) {
             MultiStore::enable();
-            //MultiStore::disable(); // @todo don't destory the table itself 
+        }
+        else {
+            MultiStore::disable();
         }
     }
 }

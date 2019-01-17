@@ -31,7 +31,8 @@ class MultiStore extends BaseModel
      * Drop MultiStore table
      */
     protected function disable() {
-        Schema::dropIfExists('multi_stores');
+        // @todo don't destroy the table itself
+        // Schema::dropIfExists('multi_stores');        
     }
 
 }
