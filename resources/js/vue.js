@@ -43,9 +43,8 @@ require('./bootstrap');
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+Vue.component('login-fields', require('../components/user/auth/login-fields.vue'));
 
-// Vue.component('example-component', require('./components/ExampleComponent.vue'));
-
-// const app = new Vue({
-//     el: '#app'
-// });
+const app = new Vue({
+     el: '#app'
+});

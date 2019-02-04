@@ -23,7 +23,7 @@
     </script>
 </head>
 <body >
-<div id="login-page" class="container-fluid">
+<div id="app" class="container-fluid">
     <div class="row justify-content-center align-items-center" style="height: 100vh;" >
         <div class="col-6">
             <div class="offset-1 col-md-10">
@@ -36,35 +36,8 @@
 
                     <form method="post" action="{{ route('admin.login') }}" >
                         @csrf
-
-                        <avored-form-input 
-                            field-name="email"
-                            label="{{ __('avored-framework::lang.user.email-label') }}" 
-                            error-text="{!! $errors->first('email') !!}"
-                            v-on:change="changeModelValue"
-                            autofocus="autofocus"
-                                >
-                        </avored-form-input>
-
-                        <avored-form-input 
-                            field-name="password"
-                            label="Password" 
-                            field-type="password"
-                            error-text="{!! $errors->first('password') !!}"
-                            v-on:change="changeModelValue"
-                                >
-                        </avored-form-input>
-
-                        <div class="form-group">
-
-                            <button type="submit" :disabled='isLoginDisbled'  class="btn btn-primary">
-                                {{ __('avored-framework::lang.admin-login-button-title') }}
-                            </button>
-
-                            <a href="{{ route('admin.password.reset') }}">
-                                {{ __('avored-framework::lang.admin-login-forget-password-link') }}
-                            </a>
-                        </div>
+                        
+                        <login-fields></login-fields>
 
                     </form>
                 </div>
@@ -77,31 +50,6 @@
     </div>
 </div>
 <!-- Scripts -->
-<script type="text/javascript" src="{{ asset('vendor/avored-admin/js/app.js') }}"></script>
-
-<script >
-    var app = new Vue({
-        el: '#login-page',
-        data : {
-            email: '',
-            password: '',
-            autofocus:true
-        },
-        computed: {
-            isLoginDisbled: function() {
-                if(this.email != "" && this.password != "") {
-                    return false;
-                }
-                return true;
-            }
-        },
-        methods: {
-            changeModelValue: function(val,fieldName) {
-                this[fieldName] = val;
-            }
-        }
-    });
-</script>
-
+<script type="text/javascript" src="{{ asset('vendor/avored-admin/js/vue.js') }}"></script>
 </body>
 </html>
