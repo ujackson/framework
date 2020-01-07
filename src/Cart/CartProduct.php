@@ -194,7 +194,7 @@ class CartProduct implements CartProductInterface
     /**
     * Format string to float
     */
-     function parseFloat($value) {
+     public function parseFloat($value) {
         return (is_float($value)) ? $value : floatval(preg_replace("/[^-0-9\.]/","", $value));
     }
 }
