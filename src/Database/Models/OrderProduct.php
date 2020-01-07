@@ -35,4 +35,9 @@ class OrderProduct extends Model
     {
         return $this->belongsTo(Product::class);
     }
+    
+    public function setPriceAttribute($value)
+    {
+        $this->attributes['price'] = (is_float($value)) ? $value : floatval(preg_replace("/[^-0-9\.]/","", $value));
+    }
 }
