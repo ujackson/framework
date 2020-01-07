@@ -188,6 +188,13 @@ class CartProduct implements CartProductInterface
      */
     public function total(): float
     {
-        return ($this->qty() * $this->price()) + $this->taxAmount();
+        return ($this->qty() * $this->parseFloat($this->price())) + $this->taxAmount();
+    }
+    
+    /**
+    * Format string to float
+    */
+     function parseFloat($value) {
+        return (is_float($value)) ? $value : floatval(preg_replace("/[^-0-9\.]/","", $value));
     }
 }
